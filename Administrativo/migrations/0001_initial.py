@@ -11,12 +11,22 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
+            name='Aula',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('descricao', models.CharField(max_length=100)),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
             name='Computadores',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('quantidadeDeMemoriaDisp', models.IntegerField()),
-                ('frequenciaProcessador', models.CharField(max_length=20)),
-                ('presencaDeUniCdDisquete', models.BinaryField()),
+                ('Quantidad_de_Memoria', models.IntegerField()),
+                ('Frequencia_do_Processador', models.CharField(max_length=20)),
+                ('Presenca_de_CD_Disquete', models.CharField(max_length=20)),
             ],
             options={
             },
@@ -26,11 +36,30 @@ class Migration(migrations.Migration):
             name='Laboratorio',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('localizacaoNivel', models.IntegerField()),
-                ('localizacaoPredio', models.CharField(max_length=60)),
-                ('numeroDeMaquinasDisp', models.IntegerField()),
-                ('lotacaoMaxima', models.IntegerField()),
-                ('TipoDeUso', models.BinaryField()),
+                ('Numero_de_Maquinas', models.IntegerField()),
+                ('Lotacao_Maxima', models.IntegerField()),
+                ('Aula', models.ForeignKey(to='Administrativo.Aula')),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Localizacao',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('nivel', models.CharField(max_length=60)),
+                ('Predio', models.CharField(max_length=60)),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='PacoteDeSoftware',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('pacote', models.CharField(max_length=60)),
             ],
             options={
             },
@@ -41,8 +70,27 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('loginUsuario', models.CharField(max_length=60)),
-                ('UsoDoLaboratorio', models.BinaryField()),
-                ('EstadoFuncional', models.BinaryField()),
+                ('Data_da_Reserva', models.DateTimeField()),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Reserva_Estado_Uso_Lab',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('situacao', models.CharField(max_length=10)),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Reserva_Uso_Lab',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('uso', models.CharField(max_length=10)),
             ],
             options={
             },
@@ -55,19 +103,56 @@ class Migration(migrations.Migration):
                 ('nome', models.CharField(max_length=60)),
                 ('versao', models.CharField(max_length=10)),
                 ('descricao', models.CharField(max_length=100)),
+                ('Pacote', models.ForeignKey(to='Administrativo.PacoteDeSoftware')),
             ],
             options={
             },
             bases=(models.Model,),
         ),
         migrations.CreateModel(
-            name='TipoAula',
+            name='TipoUso',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('descricao', models.CharField(max_length=100)),
+                ('tipo_de_uso', models.CharField(max_length=30)),
             ],
             options={
             },
             bases=(models.Model,),
+        ),
+        migrations.AddField(
+            model_name='reserva',
+            name='EstadoFuncional',
+            field=models.ForeignKey(to='Administrativo.Reserva_Estado_Uso_Lab'),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='reserva',
+            name='UsoDoLaboratorio',
+            field=models.ForeignKey(to='Administrativo.Reserva_Uso_Lab'),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='laboratorio',
+            name='Locais',
+            field=models.ForeignKey(to='Administrativo.Localizacao'),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='laboratorio',
+            name='Tipo_De_Uso',
+            field=models.ForeignKey(to='Administrativo.TipoUso'),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='computadores',
+            name='Laboratorio',
+            field=models.ForeignKey(to='Administrativo.Laboratorio'),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='computadores',
+            name='Pacotes',
+            field=models.ManyToManyField(to='Administrativo.PacoteDeSoftware'),
+            preserve_default=True,
         ),
     ]
