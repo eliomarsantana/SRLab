@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+
 # Create your views here.
 
 def index(request):
-    return HttpResponse("Pagina de relatorios.")
+    return HttpResponse("Pagina do usuario.")

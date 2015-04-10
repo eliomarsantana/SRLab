@@ -48,21 +48,3 @@ class Computadores(models.Model):
     Presenca_de_CD_Disquete = models.CharField(max_length=20)
     Laboratorio = models.ForeignKey('Laboratorio')
     Pacotes = models.ManyToManyField('PacoteDeSoftware')
-
-class Reserva(models.Model):
-    loginUsuario = models.CharField(max_length=60)
-    UsoDoLaboratorio = models.ForeignKey('Reserva_Uso_Lab')
-    EstadoFuncional = models.ForeignKey('Reserva_Estado_Uso_Lab')
-    Data_da_Reserva = models.DateTimeField()
-
-class Reserva_Uso_Lab(models.Model):
-    uso = models.CharField(max_length=10)
-
-    def __str__(self):
-        return self.uso
-
-class Reserva_Estado_Uso_Lab(models.Model):
-    situacao = models.CharField(max_length=10)
-
-    def __str__(self):
-        return self.situacao
