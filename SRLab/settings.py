@@ -10,6 +10,8 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+PROJECT_ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
+from django.conf.global_settings import TEMPLATE_DIRS
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -25,6 +27,15 @@ DEBUG = True
 TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "SRLab/staticfiles"),
+)
+
+TEMPLATE_DIRS = (
+    os.path.join(PROJECT_ROOT_PATH, 'template'),
+)
+
 
 # Application definition
 
