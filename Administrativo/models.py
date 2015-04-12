@@ -5,7 +5,7 @@ class Localizacao(models.Model):
     nivel = models.CharField(max_length=60)
     Predio = models.CharField(max_length=60)
     def __str__(self):
-        return self.nivel+"-"+self.Predio
+        return "Nivel "+self.nivel+" - "+self.Predio
 
 class Aula(models.Model):
     descricao = models.CharField(max_length=100)
@@ -27,6 +27,8 @@ class Laboratorio(models.Model):
     Locais = models.ForeignKey('Localizacao')
     Aula = models.ForeignKey('Aula')
 
+    def __str__(self):
+        return self.Locais.__str__()
 class PacoteDeSoftware(models.Model):
     pacote = models.CharField(max_length=60)
 
