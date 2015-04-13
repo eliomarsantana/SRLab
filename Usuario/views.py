@@ -7,7 +7,7 @@ from  django.template import Context, loader
 
 def index(request):
     name = 'teste'
-    t = loader.get_template('SRLab/index.html')
+    t = loader.get_template('SRLab/index_usuario.html')
     c = Context({'usuarios': name})
     return HttpResponse(t.render((c)))
 
