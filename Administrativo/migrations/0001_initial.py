@@ -66,37 +66,6 @@ class Migration(migrations.Migration):
             bases=(models.Model,),
         ),
         migrations.CreateModel(
-            name='Reserva',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('loginUsuario', models.CharField(max_length=60)),
-                ('Data_da_Reserva', models.DateTimeField()),
-            ],
-            options={
-            },
-            bases=(models.Model,),
-        ),
-        migrations.CreateModel(
-            name='Reserva_Estado_Uso_Lab',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('situacao', models.CharField(max_length=10)),
-            ],
-            options={
-            },
-            bases=(models.Model,),
-        ),
-        migrations.CreateModel(
-            name='Reserva_Uso_Lab',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('uso', models.CharField(max_length=10)),
-            ],
-            options={
-            },
-            bases=(models.Model,),
-        ),
-        migrations.CreateModel(
             name='Software',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
@@ -118,18 +87,6 @@ class Migration(migrations.Migration):
             options={
             },
             bases=(models.Model,),
-        ),
-        migrations.AddField(
-            model_name='reserva',
-            name='EstadoFuncional',
-            field=models.ForeignKey(to='Administrativo.Reserva_Estado_Uso_Lab'),
-            preserve_default=True,
-        ),
-        migrations.AddField(
-            model_name='reserva',
-            name='UsoDoLaboratorio',
-            field=models.ForeignKey(to='Administrativo.Reserva_Uso_Lab'),
-            preserve_default=True,
         ),
         migrations.AddField(
             model_name='laboratorio',
