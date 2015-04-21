@@ -13,6 +13,7 @@ from django.core.context_processors import request
 from forms import FormReserva
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 # Create your views here.
 
 @login_required(login_url='/Usuario/Login/')
@@ -49,6 +50,6 @@ def cadastrar(request):
     return render_to_response("SRLab/cadastro.html", {'form': form},
             context_instance=RequestContext(request))
 
-@login_required(login_url='/Usuario/Login/')
-def consular(request):
-    pass
+def deslogar(request):
+    logout(request)
+    return index(request)
