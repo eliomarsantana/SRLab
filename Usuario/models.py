@@ -4,7 +4,7 @@ from Administrativo.models import Aula, Laboratorio, PacoteDeSoftware
 class Reserva(models.Model):
     Data_da_Reserva = models.DateTimeField()
     Tipo_Aula = models.ForeignKey(Aula)
-    Laboratorio = models.OneToOneField(Laboratorio)
+    Laboratorio = models.ForeignKey(Laboratorio)
     Uso_Internet = models.CharField(max_length=1)
     Pacotes = models.ManyToManyField(PacoteDeSoftware)
     def __str__(self):
