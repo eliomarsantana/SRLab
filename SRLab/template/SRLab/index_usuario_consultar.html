@@ -52,9 +52,11 @@
 
     <div class="container">
       <div class="starter-template">
-         {% block corpo %}
-        
-         {% endblock %}
+            <form method="POST" action="Resultado/">{% csrf_token%}
+                <input type="text" name="consultarSoftLab" class="invisible" value="ConsultarSoftware" ><br/>
+                <label for="consultarPorLab">Relação de softwares disponíveis em cada laboratório</label><br >
+                <button name="consultar" type="submit" class="btn btn-primary">CONSULTAR</button>
+            </form>
       </div>
 	<footer class="footer">
         <p>Sistema de Reserva de Laboratório<br/>
