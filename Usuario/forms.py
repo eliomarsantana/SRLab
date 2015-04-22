@@ -1,5 +1,5 @@
 from django import forms
-from models import Reserva
+from Administrativo.models import Reserva
 from Administrativo.models import PacoteDeSoftware, Aula, Laboratorio
 
 class FormReserva(forms.ModelForm):
