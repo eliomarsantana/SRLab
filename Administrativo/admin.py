@@ -4,7 +4,7 @@ reload(sys)
 sys.setdefaultencoding("utf-8")
 from django.contrib import admin
 from models import Localizacao, Aula, TipoUso, Laboratorio, PacoteDeSoftware, Software, Computadores, EstadoLaboratorio, \
-    UsoLaboratorio,NivelPrioridadeReserva,AtedimentoReserva, EstadoLaboratorioReserva, Reserva
+    UsoLaboratorio,NivelPrioridadeReserva,AtedimentoReserva, EstadoLaboratorioReserva, Reserva, PrioridadeDeReserva
 
 class LaboratorioAdministrador(admin.ModelAdmin):
     fieldsets = [
@@ -29,7 +29,7 @@ class ReservaAdmin(admin.ModelAdmin):
     fieldsets = [
         ('INFORÇÕES DA RESERVA', {'fields': ['Data_da_Reserva'], 'classes':['collapse']}),
         ('INFORMAÇÕES DO LABORATÓRIO', {'fields': ['Laboratorio', 'Tipo_Aula'], 'classes':['collapse']}),
-        ('INFORÇÕES DE REQUISITOS DE SOFTWARE', {'fields': ['Uso_Internet', 'Pacotes'], 'classes':['collapse']}),
+        ('INFORÇÕES DE REQUISITOS DE SOFTWARE', {'fields': ['Uso_Internet'], 'classes':['collapse']}),
     ]
 
 admin.site.register(Reserva, ReservaAdmin)
@@ -46,3 +46,4 @@ admin.site.register(UsoLaboratorio)
 admin.site.register(NivelPrioridadeReserva)
 admin.site.register(AtedimentoReserva)
 admin.site.register(EstadoLaboratorioReserva)
+admin.site.register(PrioridadeDeReserva)

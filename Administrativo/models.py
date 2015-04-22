@@ -75,7 +75,7 @@ class UsoLaboratorio(models.Model):
     def __str__(self):
         return self.Uso
 class NivelPrioridadeReserva(models.Model):
-    Nivel = models.IntegerField()
+    Nivel = models.TextField(max_length=1)
     def __str__(self):
         return self.Nivel
 class AtedimentoReserva(models.Model):
@@ -90,4 +90,14 @@ class EstadoLaboratorioReserva(models.Model):
     Uso_Laboratorio = models.ForeignKey('UsoLaboratorio')
     def __str__(self):
         return self.Laboratorio.__str__()
+
+class PrioridadeDeReserva(models.Model):
+    Reserva = models.ForeignKey('Reserva')
+    Data_Autorizacao = models.DateField()
+    Data_Atendimento_da_Reserva = models.DateField()
+    Hora_Autorizacao = models.TimeField()
+    Prioridade = models.ForeignKey('NivelPrioridadeReserva')
+    Reserva_Atendida = models.ForeignKey('AtedimentoReserva')
+    def __str__(self):
+        return "Data da autorizacao"+self.Data_Autorizacao
 
