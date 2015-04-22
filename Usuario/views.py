@@ -4,7 +4,7 @@ from  django.template.loader import get_template
 from  django.template import Context, loader
 from Administrativo.models import Laboratorio
 
-from django.shortcuts import render_to_response, render
+from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
@@ -19,7 +19,7 @@ from django.contrib.auth import logout
 
 from django.views.generic import TemplateView
 from Usuario.models import Reserva
-
+import datetime
 # Create your views here.
 
 @login_required(login_url='/Usuario/Login/')
@@ -48,7 +48,13 @@ def cadastrar(request):
         if form.is_valid():
             item = form.save(commit=False)
             item.usuario = request.user
-            item.save()
+            print request.POST['Laboratorio']
+            print request.user
+            try:
+                item.save()
+            except :
+                pass
+            
             return HttpResponseRedirect("/Usuario")
     else:
         form = FormReserva()
@@ -62,9 +68,8 @@ def deslogar(request):
 
 @login_required(login_url='/Usuario/Login/')
 def consultar(request):
-    #return render(request,'SRLab/index_usuario_consultar.html')
-    reservas = Reserva.objects.all()
-    return render_to_response("SRLab/consultarResultado.html", {'reserva': reservas})
+    reservas = Reserva.objects.filter(Data_da_Reserva = datetime.date(2015,4,18))
+    return render_to_response('SRLab/consultarResultado.html',{'resultado': reservas})
 
 class ConsultarUsuario(TemplateView):
     def post(self, request, *args, **kwargs):

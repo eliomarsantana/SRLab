@@ -50,3 +50,8 @@ class Computadores(models.Model):
     Presenca_de_CD_Disquete = models.CharField(max_length=20)
     Laboratorio = models.ForeignKey('Laboratorio')
     Pacotes = models.ManyToManyField('PacoteDeSoftware')
+
+class ReservaNaoAtendida(models.Model):
+    Numero_Laboratorio = models.IntegerField()
+    Data = models.DateTimeField()
+    Usuario = models.CharField(max_length=20)

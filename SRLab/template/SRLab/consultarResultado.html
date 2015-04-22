@@ -1,7 +1,7 @@
-{% extends 'SRLab/index_usuario_consultar_resultado.html' %}
+{% extends 'SRLab/index_usuario.html' %}
 
 {% block corpo %}
-        {% for reserva in reservas %}
-            <h2>{{ reserva.Laboratorio }}</h2>
-        {% endfor %}
+	{% for reserva in resultado %}
+		<h2>{{ reserva.Laboratorio }}</h2>
+    {% endfor %}
 {% endblock %}
