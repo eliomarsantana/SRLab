@@ -68,6 +68,9 @@ def deslogar(request):
 
 @login_required(login_url='/Usuario/Login/')
 def consultar(request):
+    return render(request,"SRLab/index_usuario_consultar.html")
+
+def consultarResultado(request):
     reservas = Reserva.objects.filter(Data_da_Reserva = datetime.date(2015,4,18))
     return render_to_response('SRLab/consultarResultado.html',{'resultado': reservas})
 
