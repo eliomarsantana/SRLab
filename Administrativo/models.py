@@ -33,7 +33,10 @@ class Reserva(models.Model):
     Data_da_Reserva = models.DateTimeField()
     Tipo_Aula = models.ForeignKey('Aula')
     Laboratorio = models.ForeignKey('Laboratorio')
-    Uso_Internet = models.CharField(max_length=1)
+    Uso_Internet = models.BooleanField()
+    Nome_Usuario = models.CharField(max_length=30)
+    Email = models.CharField(max_length=60)
+
     def __str__(self):
         return "Lab.: "+self.Laboratorio.__str__()+" - Tipo de aula: "+self.Tipo_Aula.__str__()
 
@@ -75,9 +78,10 @@ class UsoLaboratorio(models.Model):
     def __str__(self):
         return self.Uso
 class NivelPrioridadeReserva(models.Model):
-    Nivel = models.TextField(max_length=1)
+    Nivel = models.CharField(max_length=1)
     def __str__(self):
         return self.Nivel
+
 class AtedimentoReserva(models.Model):
     Atendida = models.TextField(max_length=5)
     def __str__(self):
