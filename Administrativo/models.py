@@ -1,11 +1,10 @@
 from django.db import models
-
 # Create your models here.
 class Localizacao(models.Model):
     nivel = models.CharField(max_length=60)
     Predio = models.CharField(max_length=60)
     def __str__(self):
-        return self.nivel+"-"+self.Predio
+        return "Nivel "+self.nivel+" - "+self.Predio
 
 class Aula(models.Model):
     descricao = models.CharField(max_length=100)
@@ -26,6 +25,20 @@ class Laboratorio(models.Model):
     Tipo_De_Uso = models.ForeignKey('TipoUso')
     Locais = models.ForeignKey('Localizacao')
     Aula = models.ForeignKey('Aula')
+
+    def __str__(self):
+        return self.Locais.__str__()
+
+class Reserva(models.Model):
+    Data_da_Reserva = models.DateTimeField()
+    Tipo_Aula = models.ForeignKey('Aula')
+    Laboratorio = models.ForeignKey('Laboratorio')
+    Uso_Internet = models.BooleanField()
+    Nome_Usuario = models.CharField(max_length=30)
+    Email = models.CharField(max_length=60)
+
+    def __str__(self):
+        return "Lab.: "+self.Laboratorio.__str__()+" - Tipo de aula: "+self.Tipo_Aula.__str__()
 
 class PacoteDeSoftware(models.Model):
     pacote = models.CharField(max_length=60)
@@ -49,20 +62,46 @@ class Computadores(models.Model):
     Laboratorio = models.ForeignKey('Laboratorio')
     Pacotes = models.ManyToManyField('PacoteDeSoftware')
 
-class Reserva(models.Model):
-    loginUsuario = models.CharField(max_length=60)
-    UsoDoLaboratorio = models.ForeignKey('Reserva_Uso_Lab')
-    EstadoFuncional = models.ForeignKey('Reserva_Estado_Uso_Lab')
-    Data_da_Reserva = models.DateTimeField()
+class PacoteLaboratorio(models.Model):
+    Pacotes = models.ForeignKey('PacoteDeSoftware')
+    Laboratorio = models.ForeignKey('Laboratorio')
+    Data_Solicitacao = models.DateField()
+    Hora_Solicitacao = models.TimeField()
 
-class Reserva_Uso_Lab(models.Model):
-    uso = models.CharField(max_length=10)
-
+class EstadoLaboratorio(models.Model):
+    Estado_Laboratorio = models.CharField(max_length=20)
     def __str__(self):
-        return self.uso
+        return self.Estado_Laboratorio
 
-class Reserva_Estado_Uso_Lab(models.Model):
-    situacao = models.CharField(max_length=10)
-
+class UsoLaboratorio(models.Model):
+    Uso = models.TextField(max_length=20)
     def __str__(self):
-        return self.situacao
+        return self.Uso
+class NivelPrioridadeReserva(models.Model):
+    Nivel = models.CharField(max_length=1)
+    def __str__(self):
+        return self.Nivel
+
+class AtedimentoReserva(models.Model):
+    Atendida = models.TextField(max_length=5)
+    def __str__(self):
+        return self.Atendida
+
+class EstadoLaboratorioReserva(models.Model):
+    Laboratorio = models.ForeignKey('Laboratorio')
+    Estado_Laboratorio = models.ForeignKey('EstadoLaboratorio')
+    Laboratorio_Reserva = models.ForeignKey(Reserva)
+    Uso_Laboratorio = models.ForeignKey('UsoLaboratorio')
+    def __str__(self):
+        return self.Laboratorio.__str__()
+
+class PrioridadeDeReserva(models.Model):
+    Reserva = models.ForeignKey('Reserva')
+    Data_Autorizacao = models.DateField()
+    Data_Atendimento_da_Reserva = models.DateField()
+    Hora_Autorizacao = models.TimeField()
+    Prioridade = models.ForeignKey('NivelPrioridadeReserva')
+    Reserva_Atendida = models.ForeignKey('AtedimentoReserva')
+    def __str__(self):
+        return "Data da autorizacao"+self.Data_Autorizacao
+
