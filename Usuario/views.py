@@ -16,7 +16,7 @@ from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth import logout
-from Administrativo.models import PacoteLaboratorio, PrioridadeDeReserva
+from Administrativo.models import PacoteLaboratorio, PrioridadeDeReserva,Reserva
 from django.views.generic import TemplateView
 import datetime
 # Create your views here.
@@ -79,6 +79,10 @@ def PrazoAtenReservaLaboratorio(request):
     LaboratorioReserva = PrioridadeDeReserva.objects.all()
     return render_to_response('SRLab/prazoSolicitacaoReservaLab.html', {'resultadoLaboratorio': LaboratorioReserva})
 
+def LaboratorioReserData(request):
+
+    LabReserva = Reserva.objects.filter(Data_da_Reserva__lt = datetime.date(2015,4,18))
+    return render_to_response('SRLab/consultarLabPorData.html', {'Laboratorio': LabReserva})
 
 class ConsultarUsuario(TemplateView):
     def post(self, request, *args, **kwargs):

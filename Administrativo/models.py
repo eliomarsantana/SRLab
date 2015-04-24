@@ -30,7 +30,8 @@ class Laboratorio(models.Model):
         return self.Locais.__str__()
 
 class Reserva(models.Model):
-    Data_da_Reserva = models.DateTimeField()
+    Data_da_Reserva = models.DateField()
+    Horario_Reserva = models.TimeField()
     Tipo_Aula = models.ForeignKey('Aula')
     Laboratorio = models.ForeignKey('Laboratorio')
     Uso_Internet = models.ForeignKey('UsoInternet')

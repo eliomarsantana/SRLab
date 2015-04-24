@@ -1,0 +1,20 @@
+{% extends 'SRLab/index_usuario.html' %}
+
+{% block corpo %}
+    <h1>Laboratórios disponíveis para um determinado dia e horários.</h1>
+    <br/>
+    <table class="table table-bordered">
+    <tr>
+        <th>Laboratório</th>
+        <th>Data Reserva</th>
+        <th>Horário Reserva</th>
+    </tr>
+	{% for Laboratorio in LabReserva %}
+        <tr>
+		<td>{{Laboratorio.Laboratorio }}</td>
+        <td>{{Laboratorio.Data_da_Reserva }}</td>
+        <td>{{Laboratorio.Horario_Reserva }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+{% endblock %}

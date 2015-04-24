@@ -28,7 +28,7 @@ class SoftwareAdmin(admin.ModelAdmin):
     ]
 class ReservaAdmin(admin.ModelAdmin):
     fieldsets = [
-        ('INFORÇÕES DA RESERVA', {'fields': ['Data_da_Reserva'], 'classes':['collapse']}),
+        ('INFORÇÕES DA RESERVA', {'fields': ['Data_da_Reserva','Horario_Reserva'], 'classes':['collapse']}),
         ('INFORMAÇÕES DO LABORATÓRIO', {'fields': ['Laboratorio', 'Tipo_Aula'], 'classes':['collapse']}),
         ('INFORÇÕES DE REQUISITOS DE SOFTWARE', {'fields': ['Uso_Internet'], 'classes':['collapse']}),
     ]

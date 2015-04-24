@@ -56,6 +56,19 @@
           <table class="table table-bordered">
             <tr>
                 <td>
+                    <form method="POST" action="LabPorData/">{%csrf_token%}
+                        <input type="text" name="consultarSoftLab" class="invisible" value="ConsultarSoftware" ><br/>
+                        <label for="consultarPorLab">Laboratórios disponíveis para um determinado dia e horários</label><br >
+                        <table>
+                            <tr>
+                                <td><label for="data">Informe a data</label></td>
+                                <td><input type="text" id="data"></td>
+                            </tr>
+                        </table>                            <br/>
+                    <button name="consultarRelacaoPacote" type="submit" class="btn btn-primary">CONSULTAR</button>
+                         </form>
+                </td>
+                <td>
                     <form method="POST" action="RelacaoPacoteSoftInstalado/">{%csrf_token%}
                         <input type="text" name="consultarSoftLab" class="invisible" value="ConsultarSoftware" ><br/>
                         <label for="consultarPorLab">Relação de softwares disponíveis em cada laboratório</label><br >
