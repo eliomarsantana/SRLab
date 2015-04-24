@@ -18,7 +18,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 
 from django.views.generic import TemplateView
-from Usuario.models import Reserva
+from Administrativo.models import Reserva
 import datetime
 # Create your views here.
 
@@ -69,6 +69,9 @@ def deslogar(request):
 
 @login_required(login_url='/Usuario/Login/')
 def consultar(request):
+    return render(request,"SRLab/index_usuario_consultar.html")
+
+def consultarResultado(request):
     reservas = Reserva.objects.filter(Data_da_Reserva = datetime.date(2015,4,18))
     return render_to_response('SRLab/consultarResultado.html',{'resultado': reservas})
 
