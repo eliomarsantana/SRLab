@@ -50,6 +50,7 @@ def cadastrar(request):
             item.usuario = request.user
             print request.POST['Laboratorio']
             print request.user
+            print request.POST['Data_da_Reserva']
             try:
                 item.save()
             except :
