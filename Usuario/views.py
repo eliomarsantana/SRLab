@@ -18,6 +18,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from Administrativo.models import PacoteLaboratorio, PrioridadeDeReserva,Reserva
 from django.views.generic import TemplateView
+from Administrativo.forms import FormSoftwareReserva
+
 import datetime
 # Create your views here.
 
@@ -84,11 +86,18 @@ def LaboratorioReserData(request):
     LabReserva = Reserva.objects.filter(Data_da_Reserva__lt = datetime.date(2015,4,18))
     return render_to_response('SRLab/consultarLabPorData.html', {'Laboratorio': LabReserva})
 
-class ConsultarUsuario(TemplateView):
-    def post(self, request, *args, **kwargs):
-       # buscar = request.POST['consultarSoftLab']
-        reservas = Reserva.objects.all()
-        for reserva in reservas:
-            print reserva.Laboratorio
-        return render(request, "SRLab/index_usuario_consultar_resultado.html",
-                                {'reservas': reservas, 'reserva': True})
+@login_required(login_url='/Usuario/Login/')
+def solicitarReserva(request):
+    if request.method == 'POST':
+        form = FormSoftwareReserva(request.POST, request.FILES)
+        if form.is_valid():
+            item = form.save(commit=False)
+            item.usuario = request.user
+            item.save()
+
+            return HttpResponseRedirect("/Usuario")
+    else:
+        form = FormSoftwareReserva()
+
+    return render_to_response("SRLab/solicitacaoSoftware.html", {'form': form},
+            context_instance=RequestContext(request))

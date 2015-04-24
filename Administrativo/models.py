@@ -40,6 +40,15 @@ class Reserva(models.Model):
 
     def __str__(self):
         return "Lab.: "+self.Laboratorio.__str__()+" - Tipo de aula: "+self.Tipo_Aula.__str__()
+class SoftwareReservaLab(models.Model):
+    reserva = models.ForeignKey('Reserva')
+    software = models.ForeignKey('Software')
+    Data_da_Solicitacao = models.DateField()
+    Horario_Solicitacao = models.TimeField()
+
+    def __str__(self):
+        return "Reserva: "+self.reserva.__str__() +" - Software solicitado: "+self.software.__str__()
+
 class UsoInternet(models.Model):
     uso_de_internet = models.CharField(max_length=5)
     def __str__(self):

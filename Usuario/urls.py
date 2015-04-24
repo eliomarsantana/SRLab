@@ -11,4 +11,5 @@ urlpatterns = patterns('',
     url(r'^Consultar/RelacaoPacoteSoftInstalado/$', views.RelacaoPacoteSoftInstaladoLaboratorio, name='consultarResultado'),
     url(r'^Consultar/PrazoAtendSolicitaReserva/$', views.PrazoAtenReservaLaboratorio, name='prazoSolicitacaoReservaLab'),
     url(r'^Consultar/LabPorData/$', views.LaboratorioReserData, name='consultarLabPorData'),
+    url(r'^Consultar/SolicitarSoftware/$', views.solicitarReserva, name='solicitacaoSoftware'),
 )
