@@ -4,7 +4,8 @@ reload(sys)
 sys.setdefaultencoding("utf-8")
 from django.contrib import admin
 from models import Localizacao, Aula, TipoUso, Laboratorio, PacoteDeSoftware, Software, Computadores, EstadoLaboratorio, \
-    UsoLaboratorio,NivelPrioridadeReserva,AtedimentoReserva, EstadoLaboratorioReserva, Reserva, PrioridadeDeReserva
+    UsoLaboratorio,NivelPrioridadeReserva,AtedimentoReserva, EstadoLaboratorioReserva, Reserva, PrioridadeDeReserva, PacoteLaboratorio,\
+    UsoInternet
 
 class LaboratorioAdministrador(admin.ModelAdmin):
     fieldsets = [
@@ -36,6 +37,7 @@ admin.site.register(Reserva, ReservaAdmin)
 
 admin.site.register(Laboratorio, LaboratorioAdministrador)
 admin.site.register(Computadores, CoputadoresAdmin)
+admin.site.register(PacoteLaboratorio)
 admin.site.register(Software, SoftwareAdmin)
 admin.site.register(Localizacao)
 admin.site.register(Aula)
@@ -47,3 +49,4 @@ admin.site.register(NivelPrioridadeReserva)
 admin.site.register(AtedimentoReserva)
 admin.site.register(EstadoLaboratorioReserva)
 admin.site.register(PrioridadeDeReserva)
+admin.site.register(UsoInternet)

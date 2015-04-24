@@ -16,9 +16,8 @@ from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth import logout
-
+from Administrativo.models import PacoteLaboratorio
 from django.views.generic import TemplateView
-from Administrativo.models import Reserva
 import datetime
 # Create your views here.
 
@@ -72,8 +71,8 @@ def consultar(request):
     return render(request,"SRLab/index_usuario_consultar.html")
 
 def consultarResultado(request):
-    reservas = Reserva.objects.filter(Data_da_Reserva = datetime.date(2015,4,18))
-    return render_to_response('SRLab/consultarResultado.html',{'resultado': reservas})
+    PacotesSoftInstalados = PacoteLaboratorio.objects.all()
+    return render_to_response('SRLab/consultarResultado.html',{'resultado': PacotesSoftInstalados})
 
 class ConsultarUsuario(TemplateView):
     def post(self, request, *args, **kwargs):

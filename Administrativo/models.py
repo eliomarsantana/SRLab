@@ -33,12 +33,17 @@ class Reserva(models.Model):
     Data_da_Reserva = models.DateTimeField()
     Tipo_Aula = models.ForeignKey('Aula')
     Laboratorio = models.ForeignKey('Laboratorio')
-    Uso_Internet = models.BooleanField()
+    Uso_Internet = models.ForeignKey('UsoInternet')
     Nome_Usuario = models.CharField(max_length=30)
     Email = models.CharField(max_length=60)
 
     def __str__(self):
         return "Lab.: "+self.Laboratorio.__str__()+" - Tipo de aula: "+self.Tipo_Aula.__str__()
+class UsoInternet(models.Model):
+    uso_de_internet = models.CharField(max_length=5)
+    def __str__(self):
+        return self.uso_de_internet
+
 
 class PacoteDeSoftware(models.Model):
     pacote = models.CharField(max_length=60)
@@ -67,6 +72,8 @@ class PacoteLaboratorio(models.Model):
     Laboratorio = models.ForeignKey('Laboratorio')
     Data_Solicitacao = models.DateField()
     Hora_Solicitacao = models.TimeField()
+    def __str__(self):
+        return self.Laboratorio
 
 class EstadoLaboratorio(models.Model):
     Estado_Laboratorio = models.CharField(max_length=20)
