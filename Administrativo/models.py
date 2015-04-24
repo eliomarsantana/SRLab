@@ -110,5 +110,5 @@ class PrioridadeDeReserva(models.Model):
     Prioridade = models.ForeignKey('NivelPrioridadeReserva')
     Reserva_Atendida = models.ForeignKey('AtedimentoReserva')
     def __str__(self):
-        return "Data da autorizacao"+self.Data_Autorizacao
+        return self.Data_Autorizacao.__str__()
 

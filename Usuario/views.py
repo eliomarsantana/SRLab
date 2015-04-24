@@ -16,7 +16,7 @@ from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth import logout
-from Administrativo.models import PacoteLaboratorio
+from Administrativo.models import PacoteLaboratorio, PrioridadeDeReserva
 from django.views.generic import TemplateView
 import datetime
 # Create your views here.
@@ -70,9 +70,15 @@ def deslogar(request):
 def consultar(request):
     return render(request,"SRLab/index_usuario_consultar.html")
 
-def consultarResultado(request):
+def RelacaoPacoteSoftInstaladoLaboratorio(request):
     PacotesSoftInstalados = PacoteLaboratorio.objects.all()
     return render_to_response('SRLab/consultarResultado.html',{'resultado': PacotesSoftInstalados})
+
+
+def PrazoAtenReservaLaboratorio(request):
+    LaboratorioReserva = PrioridadeDeReserva.objects.all()
+    return render_to_response('SRLab/prazoSolicitacaoReservaLab.html', {'resultadoLaboratorio': LaboratorioReserva})
+
 
 class ConsultarUsuario(TemplateView):
     def post(self, request, *args, **kwargs):

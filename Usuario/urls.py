@@ -8,5 +8,6 @@ urlpatterns = patterns('',
     url(r'^Cadastrar/$', views.cadastrar, name='cadastrar'),
     url(r'^Sair/$', views.deslogar, name='deslogar'),
     url(r'^Consultar/$', views.consultar, name='consultar'),
-    url(r'^Consultar/Resultado/$', views.consultarResultado, name='consultarResultado'),
+    url(r'^Consultar/RelacaoPacoteSoftInstalado/$', views.RelacaoPacoteSoftInstaladoLaboratorio, name='consultarResultado'),
+    url(r'^Consultar/PrazoAtendSolicitaReserva/$', views.PrazoAtenReservaLaboratorio, name='prazoSolicitacaoReservaLab'),
 )

@@ -3,19 +3,15 @@
 {% block corpo %}
     <h1>Relação de softwares disponíveis em cada laboratório</h1>
     <br/>
-    <table class="table">
+    <table class="table table-bordered">
     <tr>
         <th>Laboratório</th>
         <th>Pacote de Software</th>
-        <th>Data Solicitação</th>
-        <th>Hora Solicitação</th>
     </tr>
 	{% for PacLab in resultado %}
         <tr>
 		<td>{{PacLab.Laboratorio }}</td>
         <td>{{PacLab.Pacotes }}</td>
-        <td>{{PacLab.Data_Solicitacao }}</td>
-        <td>{{PacLab.Hora_Solicitacao }}</td>
         </tr>
     {% endfor %}
     </table>

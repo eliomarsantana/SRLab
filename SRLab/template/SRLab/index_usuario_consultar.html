@@ -53,11 +53,25 @@
 
     <div class="container">
       <div class="starter-template">
-            <form method="POST" action="Resultado/">{% csrf_token%}
-                <input type="text" name="consultarSoftLab" class="invisible" value="ConsultarSoftware" ><br/>
-                <label for="consultarPorLab">Relação de softwares disponíveis em cada laboratório</label><br >
-                <button name="consultar" type="submit" class="btn btn-primary">CONSULTAR</button>
-            </form>
+          <table class="table table-bordered">
+            <tr>
+                <td>
+                    <form method="POST" action="RelacaoPacoteSoftInstalado/">{%csrf_token%}
+                        <input type="text" name="consultarSoftLab" class="invisible" value="ConsultarSoftware" ><br/>
+                        <label for="consultarPorLab">Relação de softwares disponíveis em cada laboratório</label><br >
+                    <button name="consultarRelacaoPacote" type="submit" class="btn btn-primary">CONSULTAR</button>
+                         </form>
+                </td>
+                <td>
+                    <form method="POST" action="PrazoAtendSolicitaReserva/">{% csrf_token%}
+                        <input type="text" name="consultarSoftLab" class="invisible" value="ConsultarSoftware" ><br/>
+                        <label for="consultarPorLab">Prazo para o atendimento da solicitação da reserva e prioridade da mesma.</label><br >
+                    <button name="ConsultarAtendimento" type="submit" class="btn btn-primary">CONSULTAR</button>
+                         </form>
+                </td>
+             </tr>
+
+          </table>
       </div>
 	<footer class="footer">
         <p>Sistema de Reserva de Laboratório<br/>
