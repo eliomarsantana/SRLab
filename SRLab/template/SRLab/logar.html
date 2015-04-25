@@ -1,8 +1,15 @@
 {% extends "SRLAB/index.html" %}
 {% block corpo %}
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type='submit' value='Logar' />
-</form>
+    <form method="POST" class="form-signin">{% csrf_token %}
+        <label for="username" class="sr-only">Login:</label>
+        <input type="text" id="username" name="username" class="form-control" placeholder="Login">
+        <label for="password" class="sr-only">Senha:</label>
+        <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Lembrar dados de login
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" value="Logar">ENTRAR</button>
+      </form>
 {% endblock %}
