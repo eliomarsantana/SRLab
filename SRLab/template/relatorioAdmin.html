@@ -1,0 +1,15 @@
+{% if not reservas %}
+    <p>Nenhuma reserva encontrada</p>
+{% else %}
+    <table class="table-bordered">
+            {% for reserva in reservas %}
+            <tr>
+                <td>{{ reserva.Data_Autorizacao }}</td>
+                <td>{{ reserva.Data_Atendimento_da_Reserva }}</td>
+                <td>{{ reserva.Hora_Autorizacao }}</td>
+                <td>{{ reserva.Prioridade }}</td>
+                <td>{{ reserva.Reserva_Atendida }}</td>
+            </tr>
+            {% endfor %}
+    </table>
+{% endif %}

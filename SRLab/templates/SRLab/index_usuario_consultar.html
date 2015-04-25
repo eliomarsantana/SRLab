@@ -43,7 +43,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-             <li class="active"><a href="http://localhost:8000/Usuario/Cadastrar">Realizar Reserva</a></li>
+            <li class="active"><a href="http://localhost:8000/Usuario/Cadastrar">Realizar Reserva</a></li>
             <li class="active"><a href="http://localhost:8000/Usuario/Consultar">Consultas</a></li>
             <li class="active"><a href="http://localhost:8000/Usuario/Consultar/SolicitarSoftware">Solicitar software</a></li>
             <li class="active"><a href="http://localhost:8000/Usuario/Sair">Sair</a></li>
@@ -53,9 +53,39 @@
     </nav>
 
     <div class="container">
-       {% block corpo %}
+      <div class="starter-template">
+          <table class="table table-bordered">
+            <tr>
+                <td>
+                    <form method="POST" action="LabPorData/">{%csrf_token%}
+                        <input type="text" name="consultarSoftLab" class="invisible" value="ConsultarSoftware" ><br/>
+                        <label for="consultarPorLab">Laboratórios disponíveis para um determinado dia e horários</label><br >
+                        <table>
+                            <tr>
+                                <td><label for="data">Informe a data</label></td>
+                                <td><input type="text" id="data"></td>
+                            </tr>
+                        </table>                            <br/>
+                    <button name="consultarRelacaoPacote" type="submit" class="btn btn-primary">CONSULTAR</button>
+                         </form>
+                </td>
+                <td>
+                    <form method="POST" action="RelacaoPacoteSoftInstalado/">{%csrf_token%}
+                        <input type="text" name="consultarSoftLab" class="invisible" value="ConsultarSoftware" ><br/>
+                        <label for="consultarPorLab">Relação de softwares disponíveis em cada laboratório</label><br >
+                    <button name="consultarRelacaoPacote" type="submit" class="btn btn-primary">CONSULTAR</button>
+                         </form>
+                </td>
+                <td>
+                    <form method="POST" action="PrazoAtendSolicitaReserva/">{% csrf_token%}
+                        <input type="text" name="consultarSoftLab" class="invisible" value="ConsultarSoftware" ><br/>
+                        <label for="consultarPorLab">Prazo para o atendimento da solicitação da reserva e prioridade da mesma.</label><br >
+                    <button name="ConsultarAtendimento" type="submit" class="btn btn-primary">CONSULTAR</button>
+                         </form>
+                </td>
+             </tr>
 
-       {% endblock %}
+          </table>
       </div>
 	<footer class="footer">
         <p>Sistema de Reserva de Laboratório<br/>

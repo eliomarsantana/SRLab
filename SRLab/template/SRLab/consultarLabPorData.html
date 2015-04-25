@@ -1,0 +1,28 @@
+{% extends 'SRLab/index_usuario.html' %}
+
+{% block corpo %}
+    <h1>Laboratórios disponíveis para um determinado dia e horários.</h1>
+    <br/>
+    <table class="table table-bordered">
+    
+    {% if not Laboratorio %}
+    	<tr>
+			<td width="100%">Dados nao encontrados.</td>
+	    </tr>
+	{% else %}
+	    <tr>
+	        <th>Laboratório</th>
+	        <th>Data Reserva</th>
+	        <th>Horário Reserva</th>
+	    </tr>
+    	{% for lab in Laboratorio %}
+			<tr>
+				<td>{{lab.Laboratorio }}</td>
+		        <td>{{lab.Data_da_Reserva }}</td>
+		        <td>{{lab.Horario_Reserva }}</td>
+		    </tr>
+		{% endfor %}
+    {% endif %}
+	
+    </table>
+{% endblock %}

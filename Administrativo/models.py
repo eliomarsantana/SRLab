@@ -30,15 +30,30 @@ class Laboratorio(models.Model):
         return self.Locais.__str__()
 
 class Reserva(models.Model):
-    Data_da_Reserva = models.DateTimeField()
+    Data_da_Reserva = models.DateField()
+    Horario_Reserva = models.TimeField()
     Tipo_Aula = models.ForeignKey('Aula')
     Laboratorio = models.ForeignKey('Laboratorio')
-    Uso_Internet = models.BooleanField()
+    Uso_Internet = models.ForeignKey('UsoInternet')
     Nome_Usuario = models.CharField(max_length=30)
     Email = models.CharField(max_length=60)
 
     def __str__(self):
         return "Lab.: "+self.Laboratorio.__str__()+" - Tipo de aula: "+self.Tipo_Aula.__str__()
+class SoftwareReservaLab(models.Model):
+    reserva = models.ForeignKey('Reserva')
+    software = models.ForeignKey('Software')
+    Data_da_Solicitacao = models.DateField()
+    Horario_Solicitacao = models.TimeField()
+
+    def __str__(self):
+        return "Reserva: "+self.reserva.__str__() +" - Software solicitado: "+self.software.__str__()
+
+class UsoInternet(models.Model):
+    uso_de_internet = models.CharField(max_length=5)
+    def __str__(self):
+        return self.uso_de_internet
+
 
 class PacoteDeSoftware(models.Model):
     pacote = models.CharField(max_length=60)
@@ -67,6 +82,8 @@ class PacoteLaboratorio(models.Model):
     Laboratorio = models.ForeignKey('Laboratorio')
     Data_Solicitacao = models.DateField()
     Hora_Solicitacao = models.TimeField()
+    def __str__(self):
+        return self.Laboratorio.__str__()
 
 class EstadoLaboratorio(models.Model):
     Estado_Laboratorio = models.CharField(max_length=20)
@@ -103,5 +120,5 @@ class PrioridadeDeReserva(models.Model):
     Prioridade = models.ForeignKey('NivelPrioridadeReserva')
     Reserva_Atendida = models.ForeignKey('AtedimentoReserva')
     def __str__(self):
-        return "Data da autorizacao"+self.Data_Autorizacao
+        return self.Data_Autorizacao.__str__()
 
