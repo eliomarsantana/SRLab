@@ -14,12 +14,14 @@
 	        <th>Laboratório</th>
 	        <th>Data Reserva</th>
 	        <th>Horário Reserva</th>
+            <th>Status do Laboratório</th>
 	    </tr>
     	{% for lab in Laboratorio %}
 			<tr>
 				<td>{{lab.Laboratorio }}</td>
 		        <td>{{lab.Data_da_Reserva }}</td>
 		        <td>{{lab.Horario_Reserva }}</td>
+                <td class="color_red"><strong>Indisponível</strong></td>
 		    </tr>
 		{% endfor %}
     {% endif %}
