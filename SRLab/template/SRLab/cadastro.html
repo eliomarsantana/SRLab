@@ -1,51 +1,49 @@
 {% extends 'SRLAB/index_usuario.html' %}
 
 {% block corpo %}
-    <div class="left">
-<form action="" method="post" class="form-horizontal">{% csrf_token %}
+<form action="" method="post">{% csrf_token %}
     <h1>RESERVAS</h1><BR/>
     <div class="form-group">
-        <label for="Data_da_Reserva">Data da reserva:</label>
-        <input type="date" class="form-control" id="Data_da_Reserva" name="Data_da_Reserva">
+        <label for="id_Data_da_Reserva">Data da Reserva:</label>
+        <input type="DATE" class="form-control" id="id_Data_da_Reserva" name="Data_da_Reserva">
     </div>
     <div class="form-group">
-        <label for="Horario_Reserva">Hora da reserva:</label>
-        <input type="time" class="form-control" id="" name="Horario_Reserva">
+        <label for="id_Horario_Reserva">Horario reserva:</label>
+        <input id="id_Horario_Reserva" class="form-control" name="Horario_Reserva" type="time">
     </div>
     <div class="form-group">
-        <label for="Tipo_Aula">Tipo Aula:</label>
-        <select id="Tipo_Aula" name="Tipo_Aula" class="form-control">
+        <label for="id_Tipo_Aula">Tipo Aula:</label>
+       <select id="id_Tipo_Aula" class="form-control" name="Tipo_Aula">
             {% for TipoDeaula in TipoAula %}
-                <option value="{{ TipoDeaula }}" >{{ TipoDeaula }}</option>
+                <option value="{{ TipoDeaula.id }}" >{{ TipoDeaula }}</option>
             {% endfor %}
         </select>
     </div>
     <div class="form-group">
-        <label for="Laboratorio">Laboratório:</label>
-        <select id="Laboratorio" name="Laboratorio" class="form-control">
+        <label for="id_Laboratorio">Laboratório:</label>
+        <select id="id_Laboratorio" class="form-control" name="Laboratorio">
             {% for lab in Laboratorios %}
-                <option value="{{ lab }}" >{{ lab }}</option>
+                <option value="{{ lab.id }}" >{{ lab }}</option>
             {% endfor %}
         </select>
     </div>
     <div class="form-group">
-        <label for="Uso_Internet">Uso de Internet:</label>
-        <select id="Uso_Internet" name="Uso_Internet" class="form-control">
+        <label for="id_Uso_Internet">Uso Internet:</label>
+        <select id="id_Uso_Internet" class="form-control" name="Uso_Internet">
             {% for usoInternet in UsoDeInternet %}
-                <option value="{{ usoInternet }}" >{{ usoInternet }}</option>
+                <option value="{{ usoInternet.id }}" >{{ usoInternet }}</option>
             {% endfor %}
         </select>
     </div>
     <div class="form-group">
-        <label for="Nome_Usuario">Nome do Usuário:</label>
-        <input type="text" class="form-control" id="Nome_Usuario" name="Nome_Usuario">
+        <label for="id_Nome_Usuario">Nome usuario:</label>
+        <input id="id_Nome_Usuario" class="form-control" maxlength="30" name="Nome_Usuario" type="text">
     </div>
     <div class="form-group">
-        <label for="Email">Email:</label>
-        <input type="email" class="form-control" id="Email" name="Email" >
+        <label for="id_Email">Email:</label>
+        <input id="id_Email" maxlength="60" class="form-control" name="Email" type="text">
     </div>
     <input type="submit" class="btn btn-success" value="Cadastrar">
 </form>
-    </div>
 {% endblock %}
 
