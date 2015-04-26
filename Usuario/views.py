@@ -46,8 +46,9 @@ def logar(request):
 def cadastrar(request):
     if request.method == 'POST':
         form = FormReserva(request.POST, request.FILES)
-        
+
         if form.is_valid():
+            print "aqui"
             item = form.save(commit=False)
             item.usuario = request.user
             print request.POST['Laboratorio']
