@@ -1,11 +1,34 @@
 {% extends 'SRLAB/index_usuario.html' %}
 
 {% block corpo %}
-
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Solicitar">
+    <h1>SOLICITAÇÃO DE INSTALAÇÃO DE SOFTWARE</h1><BR/>
+<div class="tamanho_30">
+<form action="" method="post">{% csrf_token %}
+    <div class="form-group">
+        <label for="id_reserva">Reserva:</label>
+       <select id="id_reserva" class="form-control" name="reserva">
+            {% for reserv in Reservas %}
+                <option value="{{ reserv.id }}" >{{ reserv }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="id_software">Software:</label>
+        <select id="id_software" class="form-control" name="software">
+            {% for soft in Software %}
+                <option value="{{ soft.id }}" >{{ soft }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="id_Data_da_Solicitacao">Data da solicitacao:</label>
+        <input type="DATE" class="form-control" id="id_Data_da_Solicitacao" name="Data_da_Solicitacao" >
+    </div>
+    <div class="form-group">
+        <label for="id_Horario_Solicitacao">Horario Solicitacao:</label>
+        <input id="id_Horario_Solicitacao" class="form-control" name="Horario_Solicitacao" type="time">
+    </div>
+    <input type="submit" class="btn btn-success" value="Solicitar">
 </form>
-
+</div>
 {% endblock %}

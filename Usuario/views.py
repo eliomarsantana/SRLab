@@ -97,5 +97,5 @@ def solicitarReserva(request):
     else:
         form = FormSoftwareReserva()
 
-    return render_to_response("SRLab/solicitacaoSoftware.html", {'form': form},
+    return render_to_response("SRLab/solicitacaoSoftware.html", {'form': form, 'Reservas': form.reserva, 'Software': form.software },
             context_instance=RequestContext(request))
