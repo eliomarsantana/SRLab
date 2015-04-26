@@ -48,12 +48,8 @@ def cadastrar(request):
         form = FormReserva(request.POST, request.FILES)
 
         if form.is_valid():
-            print "aqui"
             item = form.save(commit=False)
             item.usuario = request.user
-            print request.POST['Laboratorio']
-            print request.user
-            print request.POST['Data_da_Reserva']
             item.save()
             
             return HttpResponseRedirect("/Usuario")
@@ -82,7 +78,7 @@ def PrazoAtenReservaLaboratorio(request):
 
 def LaboratorioReserData(request):
     data = request.POST['data']
-    LabReserva = Reserva.objects.filter(Data_da_Reserva = datetime.date(int(data[6:10]),int(data[3:5]),int(data[0:2])))
+    LabReserva = Reserva.objects.filter(Data_da_Reserva = datetime.date(int(data[0:4]),int(data[5:7]),int(data[8:10])))
     return render_to_response('SRLab/consultarLabPorData.html', {'Laboratorio': LabReserva})
 
 @login_required(login_url='/Usuario/Login/')
