@@ -63,10 +63,8 @@
                         <label for="consultarPorLab">Laboratórios disponíveis para um determinado dia e horários</label><br >
                         <table>
                             <tr>
-                                <td><label for="data">Informe a data</label></td>
-                            </tr>
-                            <tr>
-                                 <td><input type="DATE" class="form-control" id="data" name="data"></td>
+                                <td><label for="data">Informe a data : </label></td>
+                                <td><input type="DATE" class="form-control" id="data" name="data"></td>
                             </tr>
                         </table>                            <br/>
                     <button name="consultarRelacaoPacote" type="submit" class="btn btn-primary">CONSULTAR</button>
@@ -76,7 +74,8 @@
                     <img src="{% static "img/buscaSoftware.png" %}">
                     <form method="POST" action="RelacaoPacoteSoftInstalado/">{%csrf_token%}
                         <input type="text" name="consultarSoftLab" class="invisible" value="ConsultarSoftware" ><br/>
-                        <label for="consultarPorLab">Relação de softwares disponíveis em cada laboratório</label><br >
+                        <label for="consultarPorLab" >Relação de softwares disponíveis em cada laboratório</label><br >
+                        <br/><br/><br/>
                     <button name="consultarRelacaoPacote" type="submit" class="btn btn-primary">CONSULTAR</button>
                          </form>
                 </td>
@@ -85,7 +84,8 @@
                     <form method="POST" action="PrazoAtendSolicitaReserva/">{% csrf_token%}
                         <input type="text" name="consultarSoftLab" class="invisible" value="ConsultarSoftware" ><br/>
                         <label for="consultarPorLab">Prazo para o atendimento da solicitação da reserva e prioridade da mesma.</label><br >
-                    <button name="ConsultarAtendimento" type="submit" class="btn btn-primary">CONSULTAR</button>
+                        <br/><br/><br/>
+                        <button name="ConsultarAtendimento" type="submit" class="btn btn-primary">CONSULTAR</button>
                          </form>
                 </td>
              </tr>
