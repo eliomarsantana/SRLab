@@ -1,0 +1,22 @@
+{% extends 'SRLab/index_usuario.html' %}
+
+{% block corpo %}
+    <h1>Relatório de Reservas não atendidas.</h1>
+    <br/>
+    <table class="table table-bordered">
+    <tr>
+        <th>Reserva</th>
+        <th>Data Atendimento</th>
+        <th>Prioridade de Atendimento</th>
+        <th>Atendimento</th>
+    </tr>
+	{% for ReservaNaoAtendida in reservaNaoAtendida %}
+        <tr>
+		<td>{{ReservaNaoAtendida.Reserva }}</td>
+        <td>{{ReservaNaoAtendida.Data_Atendimento_da_Reserva }}</td>
+        <td>{{ReservaNaoAtendida.Prioridade }}</td>
+        <td>{{ReservaNaoAtendida.Reserva_Atendida }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+{% endblock %}
