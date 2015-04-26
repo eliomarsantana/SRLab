@@ -1,11 +1,51 @@
 {% extends 'SRLAB/index_usuario.html' %}
 
 {% block corpo %}
-
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Cadastrar">
+    <div class="left">
+<form action="" method="post" class="form-horizontal">{% csrf_token %}
+    <h1>RESERVAS</h1><BR/>
+    <div class="form-group">
+        <label for="Data_da_Reserva">Data da reserva:</label>
+        <input type="date" class="form-control" id="Data_da_Reserva" name="Data_da_Reserva">
+    </div>
+    <div class="form-group">
+        <label for="Horario_Reserva">Hora da reserva:</label>
+        <input type="time" class="form-control" id="" name="Horario_Reserva">
+    </div>
+    <div class="form-group">
+        <label for="Tipo_Aula">Tipo Aula:</label>
+        <select id="Tipo_Aula" name="Tipo_Aula" class="form-control">
+            {% for TipoDeaula in TipoAula %}
+                <option value="{{ TipoDeaula }}" >{{ TipoDeaula }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="Laboratorio">Laboratório:</label>
+        <select id="Laboratorio" name="Laboratorio" class="form-control">
+            {% for lab in Laboratorios %}
+                <option value="{{ lab }}" >{{ lab }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="Uso_Internet">Uso de Internet:</label>
+        <select id="Uso_Internet" name="Uso_Internet" class="form-control">
+            {% for usoInternet in UsoDeInternet %}
+                <option value="{{ usoInternet }}" >{{ usoInternet }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="Nome_Usuario">Nome do Usuário:</label>
+        <input type="text" class="form-control" id="Nome_Usuario" name="Nome_Usuario">
+    </div>
+    <div class="form-group">
+        <label for="Email">Email:</label>
+        <input type="email" class="form-control" id="Email" name="Email" >
+    </div>
+    <input type="submit" class="btn btn-success" value="Cadastrar">
 </form>
-
+    </div>
 {% endblock %}
+

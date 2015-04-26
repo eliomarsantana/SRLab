@@ -1,6 +1,6 @@
 from django import forms
 from Administrativo.models import Reserva
-from Administrativo.models import PacoteDeSoftware, Aula, Laboratorio
+from Administrativo.models import PacoteDeSoftware, Aula, Laboratorio, UsoInternet
 
 class FormReserva(forms.ModelForm):
     Data_da_Reserva = forms.DateField(
@@ -9,5 +9,6 @@ class FormReserva(forms.ModelForm):
     Tipo_Aula = Aula.objects.all()
     Laboratorio = Laboratorio.objects.all()
     Pacotes = PacoteDeSoftware.objects.all()
+    UsoInternet = UsoInternet.objects.all()
     class Meta:
         model = Reserva

@@ -44,8 +44,9 @@ def logar(request):
 
 @login_required(login_url='/Usuario/Login/')
 def cadastrar(request):
-    if request.method == 'POST': 
+    if request.method == 'POST':
         form = FormReserva(request.POST, request.FILES)
+        
         if form.is_valid():
             item = form.save(commit=False)
             item.usuario = request.user
@@ -58,7 +59,7 @@ def cadastrar(request):
     else:
         form = FormReserva()
 
-    return render_to_response("SRLab/cadastro.html", {'form': form},
+    return render_to_response("SRLab/cadastro.html", {'form': form, 'Laboratorios': form.Laboratorio, 'UsoDeInternet':form.UsoInternet, 'TipoAula':form.Tipo_Aula },
             context_instance=RequestContext(request))
 
 def deslogar(request):
