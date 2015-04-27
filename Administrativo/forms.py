@@ -7,5 +7,5 @@ class FormSoftwareReserva(forms.ModelForm):
                     input_formats=['%d/%m/%Y', '%d/%m/%y'])"""
     reserva = Reserva.objects.all()
     software = Software.objects.all()
-    class Meta:
+    class _meta:
         model = SoftwareReservaLab

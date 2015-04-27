@@ -6,7 +6,7 @@ from django.core.context_processors import request
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
 from django.contrib.auth.forms import AuthenticationForm
-from Administrativo.models import PrioridadeDeReserva, AtedimentoReserva, EstadoLaboratorioReserva
+from Administrativo.models import PrioridadeDeReserva, AtedimentoReserva, EstadoLaboratorioReserva, Reserva
 
 
 # Create your views here.
@@ -37,3 +37,8 @@ def logar(request):
 def RelatorioEstadoLaboratorioReserva(request):
     reservas = EstadoLaboratorioReserva.objects.all()
     return render_to_response('SRLab/relatorioEstadoLab.html',{'relatorio': reservas})
+
+def ReservaPorProfessor(request):
+    ReservaPorProfessor = Reserva.objects.filter(Nome_Usuario = 'professor')
+    print ReservaPorProfessor
+    return render_to_response('SRLab/consultarReservaPorProfessor.html', {'ReservaPorProfessor': ReservaPorProfessor})

@@ -1,0 +1,30 @@
+{% extends 'SRLab/index_usuario.html' %}
+
+{% block corpo %}
+    <h1>Laboratórios reservados por um professor.</h1>
+    <br/>
+    <table class="table table-bordered">
+    
+    {% if not ReservaPorProfessor %}
+    	<tr>
+			<td width="100%">Dados nao encontrados.</td>
+	    </tr>
+	{% else %}
+	    <tr>
+	        <th>Laboratório</th>
+	        <th>Data Reserva</th>
+	        <th>Horário Reserva</th>
+            <th>Status do Laboratório</th>
+	    </tr>
+    	{% for lab in ReservaPorProfessor %}
+			<tr>
+				<td>{{lab.Laboratorio }}</td>
+		        <td>{{lab.Data_da_Reserva }}</td>
+		        <td>{{lab.Horario_Reserva }}</td>
+                
+		    </tr>
+		{% endfor %}
+    {% endif %}
+	
+    </table>
+{% endblock %}

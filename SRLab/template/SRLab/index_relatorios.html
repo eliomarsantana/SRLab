@@ -89,6 +89,24 @@
                 	</td>
              	</tr>
              </table>
+             <table class="table table-bordered">
+            	<tr>
+            	<td>
+                    <form method="GET" action="ReservaPorProfessor">{%csrf_token%}
+                        <input type="text" name="ReservaPorProfessor" class="invisible" value="ReservaPorProfessor" ><br/>
+                        <label for="ReservaPorProfessor">Laboratórios reservados por um determinado professor</label><br >
+                        <table>
+                            <tr>
+                                <td><label for="professor">Informe Professor : </label></td>
+                                <td><input type="text" class="form-control" id="professor" name="professor"></td>
+                            </tr>
+                        </table>                            <br/>
+                    <button name="ReservaPorProfessor" type="submit" class="btn btn-primary">CONSULTAR</button>
+                         </form>
+                </td>
+                <td>
+            	</tr>
+             </table>
       </div>
 	<footer class="footer">
         <p>Sistema de Reserva de Laboratório<br/>
