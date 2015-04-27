@@ -39,6 +39,5 @@ def RelatorioEstadoLaboratorioReserva(request):
     return render_to_response('SRLab/relatorioEstadoLab.html',{'relatorio': reservas})
 
 def ReservaPorProfessor(request):
-    ReservaPorProfessor = Reserva.objects.filter(Nome_Usuario = 'professor')
-    print ReservaPorProfessor
+    ReservaPorProfessor = Reserva.objects.exclude(Nome_Usuario = 'srlab')
     return render_to_response('SRLab/consultarReservaPorProfessor.html', {'ReservaPorProfessor': ReservaPorProfessor})
