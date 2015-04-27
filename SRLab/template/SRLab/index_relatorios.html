@@ -65,8 +65,7 @@
                         
                     <button name="consultarRelacaoPacote" type="submit" class="btn btn-primary">CONSULTAR</button>
                 </form>
-                
-                
+ 
                     <!--<form method="POST" action="ReservaNaoAtendida/">{%csrf_token%}
                     <input type="hidden" name="csrfmiddlewaretoken" value="gODXwPzxDgUPHcobJaKGRxUMNQmZeg97">
                         <input type="text" name="reserva" class="invisible" value="reserva" ><br/>
@@ -77,6 +76,19 @@
              </tr>
 
           </table>
+          	
+          	<table class="table table-bordered">
+            	<tr>
+                	<td>
+	          			<form method="GET" action="RelatorioOcorrencia">{%csrf_token%}
+	                        <input type="text" name="consultarSoftLab" class="invisible" value="ConsultarSoftware" ><br/>
+	                        <label for="consultarPorLab" >Relatorio de ocorrencia</label><br >
+	                        
+	                    	<button name="consultarRelacaoPacote" type="submit" class="btn btn-primary">CONSULTAR</button>
+	                	</form>
+                	</td>
+             	</tr>
+             </table>
       </div>
 	<footer class="footer">
         <p>Sistema de Reserva de Laboratório<br/>

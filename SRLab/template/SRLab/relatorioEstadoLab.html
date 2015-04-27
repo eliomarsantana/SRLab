@@ -1,0 +1,22 @@
+{% extends 'SRLab/index_usuario.html' %}
+
+{% block corpo %}
+	<h1>Relatorio de ocorrencia.</h1>
+    <br/>
+    <table class="table table-bordered">
+    <tr>
+        <th>Laboratorio</th>
+        <th>Estado do Laboratorio</th>
+        <th>Reserva</th>
+        <th>Uso do Laboratorio</th>
+    </tr>
+	{% for reserva in relatorio %}
+        <tr>
+		<td>{{reserva.Laboratorio }}</td>
+        <td>{{reserva.Estado_Laboratorio }}</td>
+        <td>{{reserva.Laboratorio_Reserva }}</td>
+        <td>{{reserva.Uso_Laboratorio }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+{% endblock %}

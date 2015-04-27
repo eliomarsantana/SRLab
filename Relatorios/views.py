@@ -6,7 +6,7 @@ from django.core.context_processors import request
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
 from django.contrib.auth.forms import AuthenticationForm
-from Administrativo.models import PrioridadeDeReserva, AtedimentoReserva
+from Administrativo.models import PrioridadeDeReserva, AtedimentoReserva, EstadoLaboratorioReserva
 
 
 # Create your views here.
@@ -32,3 +32,8 @@ def logar(request):
     
     return HttpResponseRedirect("/admin")    
     #return render(request, "SRLab/logar.html", {"form": AuthenticationForm()})
+
+@login_required(login_url='/Relatorios/Login/')    
+def RelatorioEstadoLaboratorioReserva(request):
+    reservas = EstadoLaboratorioReserva.objects.all()
+    return render_to_response('SRLab/relatorioEstadoLab.html',{'relatorio': reservas})
