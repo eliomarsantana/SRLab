@@ -57,11 +57,22 @@
           <table class="table table-bordered">
             <tr>
                 <td>
-                    <form method="POST" action="ReservaNaoAtendida/">{% csrf_token%}
-                        <input type="text" name="ReservaNaoAtendida" class="invisible" value="ReservaNaoAtendida" ><br/>
-                        <label for="ReservaNaoAtendida">Exibir todas as reservas não atendidas.</label><br >
-                    <button name="ReservaNaoAtendida" type="submit" class="btn btn-primary">CONSULTAR</button>
-                         </form>
+                
+                
+                <form method="GET" action="ReservasNaoAtendida">{%csrf_token%}
+                        <input type="text" name="consultarSoftLab" class="invisible" value="ConsultarSoftware" ><br/>
+                        <label for="consultarPorLab" >Exibir todas as reservas não atendidas.</label><br >
+                        
+                    <button name="consultarRelacaoPacote" type="submit" class="btn btn-primary">CONSULTAR</button>
+                </form>
+                
+                
+                    <!--<form method="POST" action="ReservaNaoAtendida/">{%csrf_token%}
+                    <input type="hidden" name="csrfmiddlewaretoken" value="gODXwPzxDgUPHcobJaKGRxUMNQmZeg97">
+                        <input type="text" name="reserva" class="invisible" value="reserva" ><br/>
+                        <label for="reserva">Exibir todas as reservas não atendidas.</label><br >
+                    <button name="reserva" type="submit" class="btn btn-primary">CONSULTAR</button>
+                    </form>-->
                 </td>
              </tr>
 

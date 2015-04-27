@@ -13,5 +13,5 @@ class FormReserva(forms.ModelForm):
     Laboratorio = Laboratorio.objects.all()
     Pacotes = PacoteDeSoftware.objects.all()
     UsoInternet = UsoInternet.objects.all()
-    class _meta:
+    class Meta:
         model = Reserva
