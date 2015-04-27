@@ -14,13 +14,14 @@
 	        <th>Laboratório</th>
 	        <th>Data Reserva</th>
 	        <th>Horário Reserva</th>
-            <th>Status do Laboratório</th>
+            <th>Nome do Professor</th>
 	    </tr>
     	{% for lab in ReservaPorProfessor %}
 			<tr>
 				<td>{{lab.Laboratorio }}</td>
 		        <td>{{lab.Data_da_Reserva }}</td>
 		        <td>{{lab.Horario_Reserva }}</td>
+		        <td>{{lab.Nome_Usuario }}</td>
                 
 		    </tr>
 		{% endfor %}
